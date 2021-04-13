@@ -5,7 +5,7 @@
  * Description: Create Freemius purchase button on your WordPress site
  * Author: Wahyu Wibowo
  * Author URI: https://wahyuwibowo.com
- * Version: 1.0.0
+ * Version: 1.0.1
  * Text Domain: simple-freemius-button
  * Domain Path: languages
  * 
@@ -71,7 +71,6 @@ class Simple_Freemius_Button {
     
     public function add_shortcode( $attributes ) {
         $defaults = array(
-            'plugin_name'            => '',
             'plugin_id'              => '',
             'plan_id'                => '',
             'public_key'             => '',
@@ -79,9 +78,7 @@ class Simple_Freemius_Button {
             'buy_button_selector'    => '.freemius-buy-button a',
             'free_trial_link_prefix' => '#trial-',
             'free_trial_selector'    => '.freemius-trial-button a',
-            'plugin_logo'            => '',
             'currency'               => 'usd', // usd, eur, gbp
-            'coupon'                 => ''
         );
         
         $attributes = shortcode_atts( $defaults, $attributes );
@@ -90,7 +87,6 @@ class Simple_Freemius_Button {
         wp_enqueue_script( 'simple-freemius-button' );
         
         wp_localize_script( 'simple-freemius-button', 'Simple_Freemius_Button', array(
-            'plugin_name'            => $attributes['plugin_name'],
             'plugin_id'              => $attributes['plugin_id'],
             'plan_id'                => $attributes['plan_id'],
             'public_key'             => $attributes['public_key'],
@@ -98,9 +94,7 @@ class Simple_Freemius_Button {
             'buy_button_selector'    => $attributes['buy_button_selector'],
             'free_trial_link_prefix' => $attributes['free_trial_link_prefix'],
             'free_trial_selector'    => $attributes['free_trial_selector'],
-            'plugin_logo'            => $attributes['plugin_logo'],
             'currency'               => $attributes['currency'],
-            'coupon'                 => $attributes['coupon']
         ) );
     }
 }

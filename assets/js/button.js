@@ -2,13 +2,10 @@ jQuery(document).ready(function($) {
     "use strict";
     
     var fs_handler = FS.Checkout.configure({
-        name       : Simple_Freemius_Button.plugin_name,
         currency   : Simple_Freemius_Button.currency,
-        coupon     : Simple_Freemius_Button.coupon,
         plugin_id  : Simple_Freemius_Button.plugin_id,
         plan_id    : Simple_Freemius_Button.plan_id,
-        public_key : Simple_Freemius_Button.public_key,
-        image      : Simple_Freemius_Button.plugin_logo
+        public_key : Simple_Freemius_Button.public_key
     });
     
     $(document).on('click', Simple_Freemius_Button.buy_button_selector, function (e) {
@@ -18,7 +15,6 @@ jQuery(document).ready(function($) {
         
         fs_handler.open({
             licenses : license_id,
-            disable_licenses_selector : true,
             purchaseCompleted : function (response) {},
             success : function (response) {},
             trial : false
@@ -34,7 +30,6 @@ jQuery(document).ready(function($) {
         
         fs_handler.open({
             licenses : license_id,
-            disable_licenses_selector : true,
             purchaseCompleted : function (response) {},
             success : function (response) {},
             trial : true
